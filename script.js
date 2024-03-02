@@ -68,20 +68,22 @@ window.onload = () => {
           if (i % 2 === 0) return acc;
           return (acc += [
             "<tr>",
-            `<td>${at.tipo} ${at.nome}</td>`,
-            over[i + 1]
-              ? `<td>${over[i + 1].tipo} ${over[i + 1].nome}</td>`
-              : "",
-            "</tr>",
-            "<tr>",
-            `<td class="preco">${at.preco}</td>`,
-            over[i + 1] ? `<td class="preco">${over[i + 1].preco}</td>` : "",
-            "</tr>",
-            "<tr>",
-            `<td><b>${at.tamanho}</b> - ${at.cor}</td>`,
-            over[i + 1]
-              ? `<td><b>${over[i + 1].tamanho}</b> - ${over[i + 1].cor}</td>`
-              : "",
+            `<td>`,
+            `<div>${at.tipo} ${at.nome}</div>`,
+            `<div class="preco">${at.preco}</div>`,
+            `<div><b>${at.tamanho}</b> - ${at.cor}</div>`,
+            `</td>`,
+            ...(over[i + 1]
+              ? [
+                  `<td>`,
+                  `<div>${over[i + 1].tipo} ${over[i + 1].nome}</div>`,
+                  `<div class="preco">${over[i + 1].preco}</div>`,
+                  `<div><b>${over[i + 1].tamanho}</b> - ${
+                    over[i + 1].cor
+                  }</div>`,
+                  `</td>`,
+                ]
+              : []),
             "</tr>",
           ].join("\n"));
         }, "");
@@ -106,26 +108,15 @@ window.onload = () => {
       `Nome,Tipo,Tamanho,Cor,Quantidade,Preço`,
       `Tata,Saia,P,Rosa,1,"R$ 129,00"`,
       `Tata,Saia,M,Rosa,2,"R$ 129,00"`,
-      `Jonathan,Calça,34,Azul,4,"R$ 999,99"`,
+      `Maria,Calça,34,Azul,4,"R$ 999,99"`,
       `Mariana,Vestido,U,Vermelho,2,"R$ 199,00"`,
     ].join("\n");
 
     const blob = new Blob([data], { type: "text/csv" });
-
-    // Creating an object for downloading url
     const url = window.URL.createObjectURL(blob);
-
-    // Creating an anchor(a) tag of HTML
     const a = document.createElement("a");
-
-    // Passing the blob downloading url
     a.setAttribute("href", url);
-
-    // Setting the anchor tag attribute for downloading
-    // and passing the download file name
-    a.setAttribute("download", "download.csv");
-
-    // Performing a download with click
+    a.setAttribute("download", "itens-exemplo.csv");
     a.click();
   };
 };

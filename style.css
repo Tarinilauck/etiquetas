@@ -29,6 +29,7 @@ input[type="file"] {
 
 .btn,
 button {
+  font-size: 12px;
   background-color: rgb(0 0 0 / 0%);
   border: 2px solid #252525;
   border-radius: 4px;
@@ -42,13 +43,33 @@ table {
 }
 
 table tr td {
-  padding: 2px 4px;
+  break-inside: avoid;
+  padding: 8px 12px;
   border: 1px solid #ddd;
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .preco {
   font-size: 16px;
   font-weight: 700;
+}
+
+@media print {
+  body {
+    width: 100%;
+    height: 98%;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff !important;
+  }
+
+  table {
+    border: none;
+  }
+
+  table tr td {
+    border: none;
+    break-inside: avoid;
+  }
 }
