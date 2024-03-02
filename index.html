@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etiquetas - Zonatto Store</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="row">
+      <h3>Tabela de Itens</h3>
+      <label class="btn">
+        <input id="arquivo" type="file" accept=".csv" />
+        Gerar etiquetas
+      </label>
+    </div>
+
+    <div class="row">
+      <h5>Resultado:</h5>
+      <table>
+        <tr>
+          <td>nome - tipo 1</td>
+          <td>nome - tipo 2</td>
+        </tr>
+        <tr>
+          <td class="preco">preço - 1</td>
+          <td class="preco">preço - 2</td>
+        </tr>
+        <tr>
+          <td>tamanho - cor 1</td>
+          <td>tamanho - cor 2</td>
+        </tr>
+        <tr>
+          <td>nome - tipo 3</td>
+          <td>nome - tipo 4</td>
+        </tr>
+        <tr>
+          <td class="preco">preço - 3</td>
+          <td class="preco">preço - 4</td>
+        </tr>
+        <tr>
+          <td>tamanho - cor 3</td>
+          <td>tamanho - cor 4</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <button id="print-btn">Imprimir</button>
+    </div>
+
+    <div class="row">
+      <h5>Arquivo Exemplo:</h5>
+      <button id="btn-exemplo">Download</button>
+    </div>
+  </body>
+</html>
