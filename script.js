@@ -39,7 +39,8 @@ window.onload = () => {
         const lines = String(fr.result).split("\n").slice(1);
         const mapped = lines.map((line) => {
           const matched = line.match(
-            /^([A-zÀ-ú0-9]+),([A-zÀ-ú0-9]+),(\w+),([A-zÀ-ú0-9]+),(\d+),\"(R\$\s[0-9,.]+)\"\r*$/i
+            // Nome,         Tipo,          Tamanho, Cor,        Quantidade, Preço
+            /^([A-zÀ-ú0-9]*),([A-zÀ-ú0-9]*),(\w*),([A-zÀ-ú0-9]*),(\d+),\"(R\$\s[0-9,.]+)\"\r*$/i
           );
 
           if (!matched) return;
@@ -71,16 +72,22 @@ window.onload = () => {
             `<td>`,
             `<div>${at.tipo} ${at.nome}</div>`,
             `<div class="preco">${at.preco}</div>`,
-            `<div><b>${at.tamanho}</b> - ${at.cor}</div>`,
+            `<div>${[at.tamanho ? `<b>${at.tamanho}</b>` : "", at.cor]
+              .filter((t) => Boolean(t))
+              .join(" - ")}</div>`,
             `</td>`,
             ...(over[i + 1]
               ? [
                   `<td>`,
                   `<div>${over[i + 1].tipo} ${over[i + 1].nome}</div>`,
                   `<div class="preco">${over[i + 1].preco}</div>`,
-                  `<div><b>${over[i + 1].tamanho}</b> - ${
-                    over[i + 1].cor
-                  }</div>`,
+                  `<div>${[
+                    over[i + 1].tamanho ? `<b>${over[i + 1].tamanho}</b>` : "",
+                    over[i + 1].cor,
+                  ]
+                    .filter((t) => Boolean(t))
+                    .join(" - ")}
+                  </div>`,
                   `</td>`,
                 ]
               : []),
