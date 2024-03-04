@@ -66,7 +66,7 @@ window.onload = () => {
         const tbody = document.querySelector("table tbody");
         // add over into body
         const content = over.reduce((acc, at, i) => {
-          if (i % 2 === 0) return acc;
+          if (i % 2 !== 0) return acc;
           return (acc += [
             "<tr>",
             `<td>`,

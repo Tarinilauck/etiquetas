@@ -29,6 +29,8 @@ input[type="file"] {
 
 .btn,
 button {
+  font-family: "Open Sans", sans-serif;
+  color: #252525;
   font-size: 14px;
   background-color: rgb(0 0 0 / 0%);
   border: 2px solid #252525;
