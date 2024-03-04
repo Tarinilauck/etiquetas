@@ -9,7 +9,6 @@ function mmToPx(mm) {
 window.onload = () => {
   const previa = document.querySelector(".previa");
   if (previa) {
-    console.log(previa);
     previa.style.width = `${mmToPx(100)}px`;
     previa.style.height = `${mmToPx(150)}px`;
   }
@@ -54,8 +53,8 @@ window.onload = () => {
         const lines = String(fr.result).split("\n").slice(1);
         const mapped = lines.map((line) => {
           const matched = line.match(
-            // Nome,         Tipo,          Tamanho, Cor,        Quantidade, Preço
-            /^([A-zÀ-ú0-9]*),([A-zÀ-ú0-9]*),(\w*),([A-zÀ-ú0-9]*),(\d+),\"(R\$\s[0-9,.]+)\"\r*$/i
+            // Nome,            Tipo,         Tamanho, Cor,        Quantidade, Preço
+            /^([A-zÀ-ú0-9& ]*),([A-zÀ-ú0-9& ]*),([A-zÀ-ú0-9& ]*),([A-zÀ-ú0-9& ]*),(\d+),\"(R\$\s[0-9,.]+)\"\r*$/i
           );
 
           if (!matched) return;
@@ -72,8 +71,10 @@ window.onload = () => {
 
         const over = [];
 
+        console.log("mapped:", mapped);
         mapped.forEach((it) => {
-          for (let i = 0; i < it.quantidade; i++) {
+          // if (!it) return;
+          for (let i = 0; i < it.quantidade ?? 1; i++) {
             over.push(it);
           }
         });
