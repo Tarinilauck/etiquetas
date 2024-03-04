@@ -45,6 +45,7 @@ table {
 }
 
 table tr td {
+  margin: 0 auto;
   break-inside: avoid;
   padding: 8px 12px;
   border: 1px solid #ddd;
@@ -57,6 +58,19 @@ table tr td {
   font-weight: 700;
 }
 
+.previa {
+  overflow: auto;
+  box-sizing: border-box;
+  border: 2px solid #ddd;
+  padding: 4mm;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 10cm;
+  height: 15cm;
+}
+
 @media print {
   body {
     width: 100%;
@@ -64,6 +78,7 @@ table tr td {
   }
 
   table {
+    margin: 0 auto;
     border: none;
   }
 

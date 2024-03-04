@@ -1,4 +1,19 @@
+var dpr = window.devicePixelRatio;
+var inch = 25.4; //1inch = 25.4 mm
+var ppi = 264; //Ipad3 density
+
+function mmToPx(mm) {
+  return ((mm / inch) * ppi) / dpr;
+}
+
 window.onload = () => {
+  const previa = document.querySelector(".previa");
+  if (previa) {
+    console.log(previa);
+    previa.style.width = `${mmToPx(100)}px`;
+    previa.style.height = `${mmToPx(150)}px`;
+  }
+
   const input = document.getElementById("arquivo");
 
   const printEtiquetas = (content) => {
