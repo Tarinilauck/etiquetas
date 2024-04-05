@@ -25,21 +25,32 @@ window.onload = () => {
     }
 
     popupWin.document.write(
-      '<html><head><link rel="stylesheet" href="style.css" /><link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" type="text/css"></head><body>' +
-        content +
-        "</body></html>"
+      [
+        `<html>`,
+        `<head>`,
+        `  <link rel="stylesheet" href="style.css" />`,
+        `  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" type="text/css" />`,
+        `  <script src="printScript.js"></script>`,
+        `  <style>`,
+        `    body {`,
+        `      font-family: "Open Sans" !important;`,
+        `    }`,
+        `  </style>`,
+        `</head>`,
+        `<body>`,
+        content,
+        `</body>`,
+        `</html>`,
+      ].join("\n")
     );
 
-    popupWin.document.body.setAttribute(
-      "style",
-      'font-family: "Open Sans" !important'
-    );
+    popupWin.document.close();
 
-    setTimeout(function () {
-      popupWin.document.close();
-      popupWin.print();
-      popupWin.close();
-    }, 200);
+    popupWin.addEventListener("message", (evt) => {
+      if (evt.data === "close") {
+        popupWin.close();
+      }
+    });
   };
 
   input.onchange = () => {
